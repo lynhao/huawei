@@ -28,9 +28,9 @@
       <video id="game_video" webkit-playsinline="true" playsinline="true" preload controls>
         <source src="./video/tack.mp4" type="video/mp4">
       </video>
-      <label video_id='0' class="play_label">
+      <!-- <label video_id='0' class="play_label">
         <i></i>
-      </label>
+      </label> -->
     </div>
     <div>
       <img src="./img/img3.jpg" alt="img3"/>
@@ -50,8 +50,7 @@
     window.onload = function() {
       let videoEle = document.getElementById('game_video')
       let videoItem = document.getElementsByClassName('video_item')[0]
-      let tc = document.querySelector('.tc')
-      let playLabel = document.getElementsByClassName('play_label')[0]
+      // let playLabel = document.getElementsByClassName('play_label')[0]
       let state = VIRGIN
       console.log(getClientType())
       document.oncontextmenu = function(e) {
@@ -60,7 +59,7 @@
       if (!getClientType()) {
         videoItem.addEventListener('click', (e) => {
           videoEle.play()
-          playLabel.style.display = 'none'
+          // playLabel.style.display = 'none'
         })
       } else {
         videoItem.addEventListener('touchstart', (e) => {
@@ -69,24 +68,22 @@
             videoEle.muted = false
             videoEle.play()
             state = PLAYING
-            playLabel.style.display = 'none'
+            // playLabel.style.display = 'none'
           } else if (state === PLAYING) {
             videoEle.pause()
             state = PAUSED
           } else if (state === PAUSED) {
             state = PLAYING
             videoEle.play()
-            playLabel.style.display = 'none'
+            // playLabel.style.display = 'none'
           }
         })
       }
       videoEle.addEventListener('pause', (e) => {
-        console.log('paused')
-        playLabel.style.display = 'block'
+        // playLabel.style.display = 'block'
       })
       videoEle.addEventListener('seeked', (e) => {
-        console.log('seeked')
-        playLabel.style.display = 'none'
+        // playLabel.style.display = 'none'
       })
     }
   </script>
